@@ -48,10 +48,7 @@
   background: rgba(0,0,0,0.3); 
 }
 .foto_contact {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; 
+  padding-top: 150px;
   text-align: center;
   color: white;
 
@@ -68,7 +65,7 @@ h1 {
 }
 
 .navbar a:hover {
-  color:   #1db954 ;
+  color:   green ;
 }
 
 .navbar {
@@ -84,10 +81,26 @@ h1 {
 
 .dropdown-menu {
     background-color: black ;
-    border: 1px solid brown;
+    border: 1px solid green;
 }
 
 .dropdown-item {
-    color: white;
+    color: green;
 }
 
+.nav-link.dropdown-toggle.show
+{
+  color: green;
+}
+
+#map {
+  height: 250px;
+  width: 100%;
+  border-radius: 8px; 
+}
+
+#thuismap {
+  height: 250px;
+  width: 100%;
+  border-radius: 20px;
+}
