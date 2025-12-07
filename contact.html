@@ -2,6 +2,7 @@
 <html lang="nl-BE">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
@@ -13,12 +14,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer>
     </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/map1.js" defer></script>
+
 </head>
 
 <body class="vier">
-    <nav class="navbar navbar-expand-md bg-transparent fixed-top">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" >
             <img src="assets/images/logo_transparant_wit.png" alt="logo" width="150" height="150">
         </a>
 
@@ -27,21 +35,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="project.html">Project</a>
-                </li>
                 <li class="dropdown">
                       <a class="nav-link dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Portfolio
                       </a>
                     <ul class="dropdown-menu" >
                         <li><a class="dropdown-item" href="portfolio.html">Portfolio</a></li>
-                        <li><a class="dropdown-item" href="skills.html">Skills</a></li>
-                        <li><a class="dropdown-item" href="#">Opleiding</a></li>
-                        <li><a class="dropdown-item" href="#">Stage</a></li>
-                        <li><a class="dropdown-item" href="#">Project 4</a></li>
-                        <li><a class="dropdown-item" href="#">Project 5</a></li>
-                        <li><a class="dropdown-item" href="#">Project 6</a></li>
+                        <li><a class="dropdown-item" href="portfolio.html">Webwiz</a></li>
+                        <li><a class="dropdown-item" href="skills.html">Talen</a></li>
+                        <li><a class="dropdown-item" href="skills.html#it_skills">IT Skills</a></li>
+                        <li><a class="dropdown-item" href="skills.html#opleiding_id">Opleidingen</a></li>
+                        <li><a class="dropdown-item" href="contact.html">Project 5</a></li>
+                        <li><a class="dropdown-item" href="contact.html">Project 6</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -51,41 +56,57 @@
         </div>
        
     </nav>
-    <main class="foto_contact container pt-5">
-      <div class="row">
-        <section class="col-md-7 mb-4">
-          <h2 class="text-uppercase fs-5 fw-bolder pt-3">contact</h2>
-            <p>Voor meer informatie</p>
 
-          <hr>
+      
 
-          <form action="#" method="post">
-            <fieldset class="row mb-3">
-              <div class="mb-4">
-                <label for="Volledige_naam" class="form-label">Volledige naam </label>
-                <input type="text" class="form-control" id="VolledigeNaam" placeholder="Voornaam - Achternaam" >
-              </div>
-              <div class="col-md-12 mb-5">
-                <label for="Email" class="form-label">E-mail address</label>
-                <input type="text" class="form-control" id="Email"  placeholder="naam@gmail.com">
-              </div>
-              <div class="col-md-12 mb-4">
-                  <label for="Informatie" class="form-label">Informatie</label>
-                  <input type="text" class="form-control" id="Informatie" placeholder="text">
-              </div>
-            </fieldset>
-          </form>
-        </section>
-          <aside class="col-md-5">
-            <h4 class="fw-bold">Address</h4>
-              <p class="mb mt-3">Cobdenstraat 35</p>
-              <p class="mb"> +32 467606281</p>
+  <main class="foto_contact container pt-2 ">
+    <div class="row mb-3">
+      <p><strong>Mijn school AP hogeschool</strong></p>
+        <div id="map" class="col-12 mb-3"></div>
+    </div>
+    <div class="row">
+
+      <section class="col-md-6 mb-4">
+
+        <h2 class="text-uppercase fs-5 fw-bolder pt-3">contact</h2>
+        <p>Voor meer informatie</p>
+        <hr>
+
+        <form name="contact" method="POST" data-netlify="true">
+          <fieldset class="row">
+            <div class="mb-4">
+              <label for="Volledige_naam" class="form-label">Volledige naam </label>
+              <input type="text" class="form-control" id="VolledigeNaam" placeholder="Voornaam - Achternaam" >
+            </div>
+            <div class="col-mb-12 mb-4">
+              <label for="Email" class="form-label">E-mail address</label>
+              <input type="text" class="form-control" id="Email"  placeholder="Naam@gmail.com">
+            </div>
+            <div class="col-mb-12 mb-4">
+                <label for="Informatie" class="form-label">Informatie</label>
+                <textarea type="text" class="form-control" id="Informatie" rows="4" placeholder="Tekst"></textarea>
+            </div>
+            <div>
+              <button type="submit">Verstuur</button>
+            </div>
+          </fieldset>
+        </form>
+
+      </section>
+
+
+        <aside class="col-md-6">
+          <h4 class="fw-bold">Adres</h4>
+            <p class="mb mt-3">Cobdenstraat 35</p>
+            <p class="mb"> +32 467606281</p>
+            
+            <div id="thuismap" class="mt-4"></div>
         </aside>
-      </div>
-    </main>
+    </div>
+  </main>
 
 
-    <footer class=" text-center p-4 bg-transparent text-white">
+    <footer class="text-center p-4 bg-transparent text-white">
         &copy; Aleksy pham
         <ul class="list-inline socials">
           <li class="list-inline-item">
